@@ -1,2 +1,2 @@
-# Astom homework
+# Aston homework
 This repo is dedicated for my homeworks during aston intensive
