@@ -3,7 +3,7 @@ import java.util.Comparator;
 
 public class CustomArrayList<T extends Comparable<T>> {
     private T[] data;
-    private final static int DEFAULT_CAPACITY = 5;
+    private final static int DEFAULT_CAPACITY = 10;
     private int dataFillSize;
 
     @SuppressWarnings("unchecked")
@@ -26,8 +26,8 @@ public class CustomArrayList<T extends Comparable<T>> {
 
     private void checkIndex(int index) {
         if (index >= dataFillSize || index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Index " + index + " is out of bounds for array of length "
-                    + dataFillSize);
+            throw new ArrayIndexOutOfBoundsException("Index " + index +
+                    " is out of bounds for array of length " + dataFillSize);
         }
     }
 
