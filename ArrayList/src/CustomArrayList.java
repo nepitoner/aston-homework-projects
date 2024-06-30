@@ -1,11 +1,25 @@
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * A custom implementation of an ArrayList data structure that can store elements of type T
+ * <p> Opportunities:
+ * <p> - insertion
+ * <p> - removing
+ * <p> - obtaining the element by index
+ * <p> - sorting elements
+ * @param <T> the type of elements in the list
+ * @author Oksana Shik
+ */
+
 public class CustomArrayList<T extends Comparable<T>> {
     private T[] data;
     private final static int DEFAULT_CAPACITY = 10;
     private int dataFillSize;
 
+    /**
+     * Constructs a new CustomArrayList with the default capacity of 10
+     */
     @SuppressWarnings("unchecked")
     public CustomArrayList() {
         data = (T[]) new Comparable[DEFAULT_CAPACITY];
@@ -31,6 +45,10 @@ public class CustomArrayList<T extends Comparable<T>> {
         }
     }
 
+    /**
+     * Adds a new element to the end of the list
+     * @param newElem the element to be added
+     */
     public void add(T newElem) {
         if (isFull()) {
             resize();
@@ -38,6 +56,13 @@ public class CustomArrayList<T extends Comparable<T>> {
         data[dataFillSize++] = newElem;
     }
 
+    /**
+     * Inserts a new element at the specified index, shifting the remaining elements to the right
+     *
+     * @param index    the index at which the new element should be inserted
+     * @param newElem  the element to be inserted
+     * @throws ArrayIndexOutOfBoundsException if the index is out of bounds
+     */
     @SuppressWarnings("unchecked")
     public void add(int index, T newElem) {
         if (index != dataFillSize) {
@@ -56,11 +81,23 @@ public class CustomArrayList<T extends Comparable<T>> {
         data = tempArray;
     }
 
+    /**
+     * Returns the element from the list by its index
+     * @param index the index of the element in the list
+     * @return the element at the required index
+     * @throws ArrayIndexOutOfBoundsException if the index is out of bounds
+     */
     public T get(int index) {
         checkIndex(index);
         return data[index];
     }
 
+    /**
+     * Removes the element at the specified index, shifting the remaining elements to the left
+     *
+     * @param index the index of the element to be removed
+     * @throws ArrayIndexOutOfBoundsException if the index is out of bounds
+     */
     public void removeByIndex(int index) {
         checkIndex(index);
         int numMoved = dataFillSize - index - 1;
@@ -68,6 +105,10 @@ public class CustomArrayList<T extends Comparable<T>> {
         data[--dataFillSize] = null;
     }
 
+    /**
+     * Removes the first occurrence of the specified element from the list
+     * @param value the value of the element to be removed
+     */
     public void removeByValue(T value) {
         for (int i = 0; i < dataFillSize; i++) {
             if (data[i].equals(value)) {
@@ -76,12 +117,19 @@ public class CustomArrayList<T extends Comparable<T>> {
         }
     }
 
+    /**
+     * Clears the list, resetting the internal array to the default capacity
+     */
     @SuppressWarnings("unchecked")
     public void clear() {
         data = (T[]) new Comparable[DEFAULT_CAPACITY];
         dataFillSize = 0;
     }
 
+    /**
+     * Sorts the elements in the list in descending order or ascending order
+     * @param reverse marker of the sort order to be reversed
+     */
     public void sort(boolean reverse) {
         Comparator<T> comparator;
         if (reverse) {
@@ -101,6 +149,11 @@ public class CustomArrayList<T extends Comparable<T>> {
         }
     }
 
+    /**
+     * Returns a string representation of the list
+     *
+     * @return a string representation of the list
+     */
     @Override
     public String toString() {
         return Arrays.toString(data);
