@@ -140,6 +140,14 @@ public class CustomLinkedList<T> {
     }
 
     /**
+     * Adds the specified element to the end of the list
+     * @param elem the element to be added
+     */
+    public void add(T elem) {
+        addLast(elem);
+    }
+
+    /**
      * Removes the last element from the list
      */
     public void removeLast() {
