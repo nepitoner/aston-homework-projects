@@ -93,6 +93,14 @@ public class CustomArrayList<T extends Comparable<T>> {
     }
 
     /**
+     * Returns the size of the list
+     * @return the size of the list
+     */
+    public int getSize() {
+        return dataFillSize;
+    }
+
+    /**
      * Removes the element at the specified index, shifting the remaining elements to the left
      *
      * @param index the index of the element to be removed
