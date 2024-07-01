@@ -1,5 +1,7 @@
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * A custom implementation of an ArrayList data structure that can store elements of type T
@@ -12,7 +14,7 @@ import java.util.Comparator;
  * @author Oksana Shik
  */
 
-public class CustomArrayList<T extends Comparable<T>> {
+public class CustomArrayList <T extends Comparable<T>> {
     private T[] data;
     private final static int DEFAULT_CAPACITY = 10;
     private int dataFillSize;
@@ -164,6 +166,6 @@ public class CustomArrayList<T extends Comparable<T>> {
      */
     @Override
     public String toString() {
-        return Arrays.toString(data);
+        return IntStream.range(0, dataFillSize).mapToObj(i -> data[i] + " ").collect(Collectors.joining());
     }
 }
